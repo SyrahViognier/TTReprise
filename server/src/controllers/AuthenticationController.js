@@ -1,0 +1,12 @@
+module.exports = {
+  register (req, res) {
+    res.send({
+      message: `Hello ${ req.body.email }! Your user was registered! Have fun!`
+    })
+  },
+  login (req, res) {
+    res.send({
+      message: `Hello ${ req.body.email }! Your user has logged in!!`
+    })
+  }
+}
