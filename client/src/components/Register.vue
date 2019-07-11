@@ -6,29 +6,28 @@
           <v-toolbar-title>Register</v-toolbar-title>
         </v-toolbar>
         <div class="pl-4 pr-4 pt-2 pt-2">
-          <input
-            type="email"
-            name="email"
+          <v-form>
+            <v-text-field
+            label="Email"
             v-model="email"
-            placeholder="email"
-          />
-          <br/>
-          <input
+            ></v-text-field>
+            <br/>
+            <v-text-field
             type="password"
-            name="password"
+            label="Password"
             v-model="password"
-            placeholder="password"
-          />
-          <br/>
-          <div class="error" v-html="error"></div>
-          <br/>
-          <v-btn
+            ></v-text-field>
+            <br/>
+            <div class="error" v-html="error"></div>
+            <br/>
+            <v-btn
             class="cyan"
             dark
             @click="register"
-          >
+            >
             Register
           </v-btn>
+        </v-form>
         </div>
       </div>
     </v-flex>
