@@ -19,6 +19,13 @@
       <v-btn
         flat
         dark
+        @click="navigateTo({name: 'login'})"
+      >
+        Login
+      </v-btn>
+      <v-btn
+        flat
+        dark
         @click="navigateTo({name: 'register'})"
       >
         Register
