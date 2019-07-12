@@ -9,5 +9,8 @@ module.exports = {
       host: process.env.HOST || 'localhost',
       storage: './ttreprise.sqlite'
     }
+  },
+  authetication: {
+    jwtSecret: process.env.JWT_SECRET || 'secret'
   }
 }
