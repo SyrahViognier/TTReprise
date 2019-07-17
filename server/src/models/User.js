@@ -1,14 +1,14 @@
 const Promise = require('bluebird')
-const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'))
+const bcrypt = Promise.promisifyAll(require('bcrypt'))
 
-function hashPassword (user/*, options*/) { /*hide options as eslint won't allow this to run as options declared but never used*/
+function hashPassword (user, options) { //eslint-disable-line
   const SALT_FACTOR = 8
   if (!user.changed('password')) {
     return
   }
   return bcrypt
     .genSaltAsync(SALT_FACTOR)
-    .then(salt => bcrypt.hashAsync(user.password, salt, null))
+    .then(salt => bcrypt.hashSync(user.password, salt, null))
     .then(hash => {
       user.setDataValue('password', hash)
     })
@@ -23,6 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING
   }, {
     hooks: {
+      /*beforeCreate: hashPassword,
+      beforeUpdate: hashPassword,*/
       beforeSave: hashPassword
     }
   })
